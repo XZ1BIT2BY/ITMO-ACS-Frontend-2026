@@ -25,21 +25,8 @@
         <ul class="navbar-nav me-auto ms-lg-4 gap-lg-1">
           <li class="nav-item"><a class="nav-link" href="vacancies.html">Вакансии</a></li>
           <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
-          <li class="nav-item"><a class="nav-link" href="employer.html">Для работодателей</a></li>
         </ul>
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2" type="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="account-avatar" style="width:32px;height:32px;font-size:.85rem;">ДФ</span>
-            Денис Фёдоров
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item active" href="account.html">Мой кабинет</a></li>
-            <li><a class="dropdown-item" href="employer.html">Кабинет работодателя</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="index.html"><i class="bi bi-box-arrow-right me-1"></i>Выйти</a></li>
-          </ul>
-        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mt-3 mt-lg-0" id="navAuth"></div>
       </div>
     </div>
   </nav>
@@ -57,11 +44,14 @@
     <div class="card border-0 shadow-sm mb-4">
       <div class="card-body p-4">
         <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
-          <span class="account-avatar">ДФ</span>
+          <span class="account-avatar" id="profileAvatar">ДФ</span>
           <div class="flex-grow-1">
-            <h1 class="h3 mb-1">Денис Фёдоров</h1>
-            <div class="text-muted mb-2"><i class="bi bi-geo-alt me-1"></i>Санкт-Петербург · <i class="bi bi-envelope ms-2 me-1"></i>faralones67@gmail.com</div>
-            <div class="d-flex flex-wrap gap-2">
+            <h1 class="h3 mb-1" id="profileName">Денис Фёдоров</h1>
+            <div class="text-muted mb-2">
+              <i class="bi bi-geo-alt me-1"></i><span id="profileCity">Санкт-Петербург</span> · 
+              <i class="bi bi-envelope ms-2 me-1"></i><span id="profileEmail">faralones67@gmail.com</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2" id="profileSkills">
               <span class="badge skill-badge">JavaScript</span>
               <span class="badge skill-badge">TypeScript</span>
               <span class="badge skill-badge">React</span>
@@ -150,26 +140,7 @@
                     <th scope="col">Статус</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td><a href="vacancy.html">Senior Frontend-разработчик</a></td>
-                    <td>Яндекс</td>
-                    <td class="text-nowrap">05.11.2026</td>
-                    <td><span class="badge text-bg-warning-subtle text-warning-emphasis">На рассмотрении</span></td>
-                  </tr>
-                  <tr>
-                    <td><a href="vacancy.html">Backend-разработчик Python</a></td>
-                    <td>Ozon</td>
-                    <td class="text-nowrap">01.11.2026</td>
-                    <td><span class="badge text-bg-success-subtle text-success-emphasis">Приглашение</span></td>
-                  </tr>
-                  <tr>
-                    <td><a href="vacancy.html">UX/UI-дизайнер продукта</a></td>
-                    <td>МТС</td>
-                    <td class="text-nowrap">28.10.2026</td>
-                    <td><span class="badge text-bg-secondary-subtle text-secondary-emphasis">Отказ</span></td>
-                  </tr>
-                </tbody>
+                <tbody id="recentApplications"></tbody>
               </table>
             </div>
           </div>
@@ -261,36 +232,7 @@
                     <th scope="col">Статус</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td><a href="vacancy.html">Senior Frontend-разработчик</a></td>
-                    <td>Яндекс</td>
-                    <td class="salary text-nowrap">от 280 000 ₽</td>
-                    <td class="text-nowrap">05.11.2026</td>
-                    <td><span class="badge text-bg-warning-subtle text-warning-emphasis">На рассмотрении</span></td>
-                  </tr>
-                  <tr>
-                    <td><a href="vacancy.html">Backend-разработчик Python</a></td>
-                    <td>Ozon</td>
-                    <td class="salary text-nowrap">220 000 – 300 000 ₽</td>
-                    <td class="text-nowrap">01.11.2026</td>
-                    <td><span class="badge text-bg-success-subtle text-success-emphasis">Приглашение</span></td>
-                  </tr>
-                  <tr>
-                    <td><a href="vacancy.html">CTO / Технический директор</a></td>
-                    <td>Тинькофф</td>
-                    <td class="salary text-nowrap">от 400 000 ₽</td>
-                    <td class="text-nowrap">30.10.2026</td>
-                    <td><span class="badge text-bg-warning-subtle text-warning-emphasis">На рассмотрении</span></td>
-                  </tr>
-                  <tr>
-                    <td><a href="vacancy.html">UX/UI-дизайнер продукта</a></td>
-                    <td>МТС Digital</td>
-                    <td class="salary text-nowrap">до 210 000 ₽</td>
-                    <td class="text-nowrap">28.10.2026</td>
-                    <td><span class="badge text-bg-secondary-subtle text-secondary-emphasis">Отказ</span></td>
-                  </tr>
-                </tbody>
+                <tbody id="myApplications"></tbody>
               </table>
             </div>
           </div>
@@ -298,47 +240,7 @@
 
         <section data-section-panel="favorites" class="d-none">
           <h2 class="h5 mb-3">Избранные вакансии</h2>
-          <div class="d-flex flex-column gap-3">
-            <article class="vacancy-item card border-0">
-              <div class="card-body d-flex flex-wrap justify-content-between gap-3">
-                <div>
-                  <h3 class="h6 mb-1"><a class="vacancy-title" href="vacancy.html">Backend-разработчик Python</a></h3>
-                  <div class="small text-muted">Ozon · Удалённо · 1–3 года</div>
-                  <div class="fw-semibold salary mt-1">220 000 – 300 000 ₽</div>
-                </div>
-                <div class="d-flex gap-2 align-items-start">
-                  <a href="vacancy.html" class="btn btn-sm btn-primary">Откликнуться</a>
-                  <button type="button" class="btn btn-sm btn-outline-danger" data-toast="Вакансия удалена из избранного"><i class="bi bi-heartbreak"></i></button>
-                </div>
-              </div>
-            </article>
-            <article class="vacancy-item card border-0">
-              <div class="card-body d-flex flex-wrap justify-content-between gap-3">
-                <div>
-                  <h3 class="h6 mb-1"><a class="vacancy-title" href="vacancy.html">CTO / Технический директор</a></h3>
-                  <div class="small text-muted">Тинькофф · Москва · Более 6 лет</div>
-                  <div class="fw-semibold salary mt-1">от 400 000 ₽</div>
-                </div>
-                <div class="d-flex gap-2 align-items-start">
-                  <a href="vacancy.html" class="btn btn-sm btn-primary">Откликнуться</a>
-                  <button type="button" class="btn btn-sm btn-outline-danger" data-toast="Вакансия удалена из избранного"><i class="bi bi-heartbreak"></i></button>
-                </div>
-              </div>
-            </article>
-            <article class="vacancy-item card border-0">
-              <div class="card-body d-flex flex-wrap justify-content-between gap-3">
-                <div>
-                  <h3 class="h6 mb-1"><a class="vacancy-title" href="vacancy.html">UX/UI-дизайнер продукта</a></h3>
-                  <div class="small text-muted">МТС Digital · Гибрид · Без опыта</div>
-                  <div class="fw-semibold salary mt-1">до 210 000 ₽</div>
-                </div>
-                <div class="d-flex gap-2 align-items-start">
-                  <a href="vacancy.html" class="btn btn-sm btn-primary">Откликнуться</a>
-                  <button type="button" class="btn btn-sm btn-outline-danger" data-toast="Вакансия удалена из избранного"><i class="bi bi-heartbreak"></i></button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <div class="d-flex flex-column gap-3" id="favoritesList"></div>
         </section>
 
         <section data-section-panel="settings" class="d-none">
@@ -363,7 +265,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="setCity" class="form-label">Город</label>
-                  <input type="text" class="form-control" id="setCity" value="Москва">
+                  <input type="text" class="form-control" id="setCity" value="Санкт-Петербург">
                 </div>
                 <div class="col-12">
                   <label for="setAbout" class="form-label">О себе</label>
@@ -462,6 +364,10 @@
 </div>
 
 <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/profile.js"></script>
 <script src="js/main.js"></script>
 <script>
   document.querySelectorAll('[data-section-link]').forEach(function (link) {

@@ -27,10 +27,7 @@
           <li class="nav-item"><a class="nav-link" href="companies.html">Компании</a></li>
           <li class="nav-item"><a class="nav-link" href="account.html">Личный кабинет</a></li>
         </ul>
-        <div class="d-flex align-items-center gap-2">
-          <span class="company-logo bg-primary-subtle text-primary" style="width:32px;height:32px;font-size:.8rem;">Я</span>
-          <span class="fw-semibold">Яндекс · HR</span>
-        </div>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mt-3 mt-lg-0" id="navAuth"></div>
       </div>
     </div>
   </nav>
@@ -136,68 +133,7 @@
                   <th scope="col" class="text-end">Действия</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr data-title="Senior Frontend-разработчик" data-industry="IT" data-salary="280000" data-status="active">
-                  <td>
-                    <div class="fw-semibold">Senior Frontend-разработчик</div>
-                    <div class="small text-muted">IT и телеком</div>
-                  </td>
-                  <td class="text-nowrap fw-semibold salary">от 280 000 ₽</td>
-                  <td><span class="badge text-bg-success-subtle text-success-emphasis">Активна</span></td>
-                  <td class="text-center">18</td>
-                  <td class="text-muted small text-nowrap">05.11.2026</td>
-                  <td class="text-end text-nowrap">
-                    <a href="vacancy.html" class="btn btn-sm btn-light" title="Открыть"><i class="bi bi-eye"></i></a>
-                    <button type="button" class="btn btn-sm btn-light" title="Редактировать" data-edit-vacancy><i class="bi bi-pencil"></i></button>
-                    <button type="button" class="btn btn-sm btn-light text-danger" title="Удалить" data-delete-vacancy><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-                <tr data-title="Backend-разработчик Go" data-industry="IT" data-salary="250000" data-status="active">
-                  <td>
-                    <div class="fw-semibold">Backend-разработчик Go</div>
-                    <div class="small text-muted">IT и телеком</div>
-                  </td>
-                  <td class="text-nowrap fw-semibold salary">250 000 – 320 000 ₽</td>
-                  <td><span class="badge text-bg-success-subtle text-success-emphasis">Активна</span></td>
-                  <td class="text-center">9</td>
-                  <td class="text-muted small text-nowrap">01.11.2026</td>
-                  <td class="text-end text-nowrap">
-                    <a href="vacancy.html" class="btn btn-sm btn-light" title="Открыть"><i class="bi bi-eye"></i></a>
-                    <button type="button" class="btn btn-sm btn-light" title="Редактировать" data-edit-vacancy><i class="bi bi-pencil"></i></button>
-                    <button type="button" class="btn btn-sm btn-light text-danger" title="Удалить" data-delete-vacancy><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-                <tr data-title="Менеджер по продажам B2B" data-industry="trade" data-salary="120000" data-status="active">
-                  <td>
-                    <div class="fw-semibold">Менеджер по продажам B2B</div>
-                    <div class="small text-muted">Торговля</div>
-                  </td>
-                  <td class="text-nowrap fw-semibold salary">от 120 000 ₽</td>
-                  <td><span class="badge text-bg-success-subtle text-success-emphasis">Активна</span></td>
-                  <td class="text-center">7</td>
-                  <td class="text-muted small text-nowrap">20.10.2026</td>
-                  <td class="text-end text-nowrap">
-                    <a href="vacancy.html" class="btn btn-sm btn-light" title="Открыть"><i class="bi bi-eye"></i></a>
-                    <button type="button" class="btn btn-sm btn-light" title="Редактировать" data-edit-vacancy><i class="bi bi-pencil"></i></button>
-                    <button type="button" class="btn btn-sm btn-light text-danger" title="Удалить" data-delete-vacancy><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-                <tr data-title="SMM-специалист" data-industry="marketing" data-salary="80000" data-status="closed">
-                  <td>
-                    <div class="fw-semibold">SMM-специалист</div>
-                    <div class="small text-muted">Маркетинг и реклама</div>
-                  </td>
-                  <td class="text-nowrap fw-semibold salary">от 80 000 ₽</td>
-                  <td><span class="badge text-bg-secondary-subtle text-secondary-emphasis">Архив</span></td>
-                  <td class="text-center">3</td>
-                  <td class="text-muted small text-nowrap">12.09.2026</td>
-                  <td class="text-end text-nowrap">
-                    <a href="vacancy.html" class="btn btn-sm btn-light" title="Открыть"><i class="bi bi-eye"></i></a>
-                    <button type="button" class="btn btn-sm btn-light" title="Редактировать" data-edit-vacancy><i class="bi bi-pencil"></i></button>
-                    <button type="button" class="btn btn-sm btn-light text-danger" title="Удалить" data-delete-vacancy><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="employerBody"></tbody>
             </table>
           </div>
         </div>
@@ -275,7 +211,7 @@
 <div class="modal fade" id="newVacancyModal" tabindex="-1" aria-labelledby="newVacancyModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      <form class="needs-validation" novalidate>
+      <form id="newVacancyForm" novalidate>
         <div class="modal-header">
           <h2 class="modal-title h5" id="newVacancyModalLabel">Новая вакансия</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -341,7 +277,7 @@
 <div class="modal fade" id="vacancyModal" tabindex="-1" aria-labelledby="vacancyModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form class="needs-validation" id="vacancyForm" novalidate>
+      <form id="vacancyForm" novalidate>
         <div class="modal-header">
           <h2 class="modal-title h5" id="vacancyModalLabel">Редактирование вакансии</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -414,6 +350,11 @@
 </div>
 
 <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/employer-page.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

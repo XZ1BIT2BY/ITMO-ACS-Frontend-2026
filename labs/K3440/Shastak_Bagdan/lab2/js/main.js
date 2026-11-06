@@ -94,7 +94,7 @@
     const list = document.getElementById('vacancyList');
     if (!form || !list) return;
 
-    const cards = Array.prototype.slice.call(list.querySelectorAll('.vacancy-item'));
+    const getCards = function () { return Array.prototype.slice.call(list.querySelectorAll('.vacancy-item')); };
     const counter = document.getElementById('resultsCount');
     const emptyState = document.getElementById('emptyState');
     const resetBtn = document.getElementById('resetFilters');
@@ -114,7 +114,7 @@
       const remoteOnly = form.querySelector('#filterRemote').checked;
 
       let visible = 0;
-      cards.forEach(function (card) {
+      getCards().forEach(function (card) {
         const matchesQuery = !q ||
           card.dataset.title.toLowerCase().includes(q) ||
           card.dataset.company.toLowerCase().includes(q);
@@ -130,14 +130,14 @@
       });
 
       if (counter) counter.textContent = visible;
-      if (emptyState) emptyState.classList.toggle('d-none', visible !== 0);
+      if (emptyState) emptyState.classList.toggle('d-none', visible !== 0 || list.dataset.loading === 'true');
       updateQueryString();
     }
 
     function sortCards() {
       if (!sortSelect) return;
       const mode = sortSelect.value;
-      const sorted = cards.slice().sort(function (a, b) {
+      const sorted = getCards().sort(function (a, b) {
         if (mode === 'salary') {
           return numberFrom(b.dataset.salary) - numberFrom(a.dataset.salary);
         }
@@ -187,6 +187,7 @@
       sortSelect.addEventListener('change', sortCards);
     }
 
+    window.applyVacancyFilters = applyFilters;
     applyFilters();
   }
 
@@ -205,127 +206,6 @@
         });
       });
     });
-  }
-
-  const vacancyForm = document.getElementById('vacancyForm');
-  if (vacancyForm) {
-    const editModalEl = document.getElementById('vacancyModal');
-    const editModal = bootstrap.Modal.getOrCreateInstance(editModalEl);
-    const deleteModalEl = document.getElementById('deleteVacancyModal');
-    const deleteModal = bootstrap.Modal.getOrCreateInstance(deleteModalEl);
-
-    document.querySelectorAll('[data-edit-vacancy]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        const row = button.closest('tr');
-        vacancyForm.querySelector('#vacancyTitle').value = row.dataset.title || '';
-        vacancyForm.querySelector('#vacancyIndustry').value = row.dataset.industry || '';
-        vacancyForm.querySelector('#vacancySalary').value = row.dataset.salary || '';
-        vacancyForm.querySelector('#vacancyStatus').value = row.dataset.status || 'active';
-        editModal.show();
-      });
-    });
-
-    let rowToDelete = null;
-    document.querySelectorAll('[data-delete-vacancy]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        rowToDelete = button.closest('tr');
-        const name = deleteModalEl.querySelector('#deleteVacancyName');
-        if (name) name.textContent = rowToDelete.dataset.title;
-        deleteModal.show();
-      });
-    });
-
-    const confirmDelete = document.getElementById('confirmDeleteVacancy');
-    if (confirmDelete) {
-      confirmDelete.addEventListener('click', function () {
-        if (rowToDelete) {
-          rowToDelete.remove();
-          showToast('Вакансия удалена', 'text-bg-danger');
-        }
-        deleteModal.hide();
-        updateEmployerStats();
-      });
-    }
-
-    vacancyForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      if (!vacancyForm.checkValidity()) {
-        vacancyForm.classList.add('was-validated');
-        return;
-      }
-      editModal.hide();
-      showToast('Изменения сохранены');
-    });
-
-    function updateEmployerStats() {
-      const rows = document.querySelectorAll('#employerVacancies tbody tr');
-      const counter = document.getElementById('employerVacanciesCount');
-      if (counter) counter.textContent = rows.length;
-      const active = document.querySelectorAll('#employerVacancies tbody tr[data-status="active"]');
-      const activeCounter = document.getElementById('employerActiveCount');
-      if (activeCounter) activeCounter.textContent = active.length;
-    }
-
-    const newVacancyModalEl = document.getElementById('newVacancyModal');
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
-    function addVacancyRow(form) {
-      const tableBody = document.querySelector('#employerVacancies tbody');
-      if (!tableBody) return;
-      const title = form.querySelector('#newVacancyTitle').value;
-      const industry = form.querySelector('#newVacancyIndustry').value;
-      const salary = form.querySelector('#newVacancySalary').value;
-      const industryLabels = {
-        IT: 'IT и телеком',
-        finance: 'Финансы и банки',
-        trade: 'Торговля',
-        marketing: 'Маркетинг',
-        education: 'Образование',
-        medicine: 'Медицина'
-      };
-      const row = document.createElement('tr');
-      row.dataset.title = title;
-      row.dataset.industry = industry;
-      row.dataset.salary = salary;
-      row.dataset.status = 'active';
-      row.innerHTML =
-        '<td><div class="fw-semibold">' + escapeHtml(title) + '</div>' +
-        '<div class="small text-muted">' + (industryLabels[industry] || '') + '</div></td>' +
-        '<td class="text-nowrap fw-semibold salary">' + escapeHtml(salary) + '</td>' +
-        '<td><span class="badge text-bg-success-subtle text-success-emphasis">Активна</span></td>' +
-        '<td class="text-center">0</td>' +
-        '<td class="text-muted small text-nowrap">сегодня</td>' +
-        '<td class="text-end text-nowrap">' +
-        '<button type="button" class="btn btn-sm btn-light" data-toast="Открываю предпросмотр">' +
-        '<i class="bi bi-eye"></i></button> ' +
-        '<button type="button" class="btn btn-sm btn-light" data-toast="Редактирование: ' + escapeHtml(title) + '">' +
-        '<i class="bi bi-pencil"></i></button> ' +
-        '<button type="button" class="btn btn-sm btn-light text-danger" data-toast="Вакансия снята с публикации">' +
-        '<i class="bi bi-trash"></i></button></td>';
-      tableBody.prepend(row);
-      updateEmployerStats();
-    }
-
-    if (newVacancyModalEl) {
-      const newForm = newVacancyModalEl.querySelector('form');
-      newForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!newForm.checkValidity()) {
-          newForm.classList.add('was-validated');
-          return;
-        }
-        addVacancyRow(newForm);
-        bootstrap.Modal.getOrCreateInstance(newVacancyModalEl).hide();
-        newForm.reset();
-        newForm.classList.remove('was-validated');
-        showToast('Вакансия опубликована');
-      });
-    }
   }
 
   const companySearch = document.getElementById('companySearch');

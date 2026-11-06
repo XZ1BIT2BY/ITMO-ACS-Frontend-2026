@@ -58,7 +58,7 @@
               <p class="text-muted small">Выберите тип профиля и заполните базовые данные</p>
             </div>
 
-            <form class="needs-validation" novalidate id="registerPageForm">
+            <form novalidate id="registerPageForm">
               <div class="mb-4">
                 <label class="form-label small fw-semibold text-muted text-uppercase d-block text-center">Кем вы регистрируетесь?</label>
                 <div class="row g-2">
@@ -160,6 +160,9 @@
 </div>
 
 <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/header-auth.js"></script>
 <script src="js/main.js"></script>
 <script>
   const typeSeeker = document.getElementById('regTypeSeeker');
@@ -170,6 +173,15 @@
   function toggleRole() {
     const isEmployer = typeEmployer.checked;
     fieldCompany.classList.toggle('d-none', !isEmployer);
+    // у работодателя имя и фамилия не нужны (компания указывается отдельно)
+    ['fieldFirstName', 'fieldLastName'].forEach(function (id) {
+      document.getElementById(id).classList.toggle('d-none', isEmployer);
+    });
+    ['pageRegFirstName', 'pageRegLastName'].forEach(function (id) {
+      const input = document.getElementById(id);
+      if (isEmployer) { input.removeAttribute('required'); input.value = ''; }
+      else { input.setAttribute('required', 'required'); }
+    });
     if (isEmployer) {
       companyInput.setAttribute('required', 'required');
     } else {
@@ -192,15 +204,37 @@
   p1.addEventListener('input', checkMatch);
   p2.addEventListener('input', checkMatch);
 
-  document.getElementById('registerPageForm').addEventListener('submit', function (e) {
+  document.getElementById('registerPageForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
     checkMatch();
-    if (this.checkValidity()) {
-      e.preventDefault();
-      const isEmployer = typeEmployer.checked;
-      showToast('Регистрация успешна! Добро пожаловать!');
-      setTimeout(function () {
-        location.href = isEmployer ? 'employer.html' : 'account.html';
-      }, 900);
+    this.classList.add('was-validated');
+    if (!this.checkValidity()) return;
+
+    const isEmployer = typeEmployer.checked;
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+
+    const data = {
+      email: document.getElementById('pageRegEmail').value.trim(),
+      password: p1.value,
+      role: isEmployer ? 'employer' : 'jobseeker',   
+      phone: document.getElementById('pageRegPhone').value.trim()
+    };
+    if (isEmployer) {
+      data.companyName = companyInput.value.trim();
+      data.companyIndustry = '';
+    } else {
+      data.firstName = document.getElementById('pageRegFirstName').value.trim();
+      data.lastName = document.getElementById('pageRegLastName').value.trim();
+    }
+
+    try {
+      await api.register(data);            
+      showToast('Регистрация успешна!');
+      setTimeout(() => location.href = isEmployer ? 'employer.html' : 'account.html', 800);
+    } catch (err) {
+      showToast(err.message || 'Ошибка регистрации', 'text-bg-danger');
+      btn.disabled = false;
     }
   });
 </script>

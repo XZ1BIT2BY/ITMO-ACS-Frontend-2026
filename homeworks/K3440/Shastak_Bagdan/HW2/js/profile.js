@@ -152,9 +152,9 @@ async function loadFavorites() {
             <div class="fw-semibold salary mt-1">${escHtml(formatSalary(v))}</div>
           </div>
           <div class="d-flex gap-2 align-items-start">
-            <a href="vacancy.html?id=${v.id}" class="btn btn-sm btn-primary">Откликнуться</a>
-            <button type="button" class="btn btn-sm btn-outline-danger" data-remove-favorite="${v.id}" title="Убрать из избранного">
-              <i class="bi bi-heartbreak"></i></button>
+            <a href="vacancy.html?id=${v.id}" class="btn btn-sm btn-primary" aria-label="Откликнуться на вакансию «${escHtml(v.title)}»">Откликнуться</a>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-remove-favorite="${v.id}" title="Убрать из избранного" aria-label="Убрать из избранного: ${escHtml(v.title)}">
+              <i aria-hidden="true" class="bi bi-heartbreak"></i></button>
           </div>
         </div>
       </article>`).join('') : '<p class="text-muted">В избранном пока пусто</p>';

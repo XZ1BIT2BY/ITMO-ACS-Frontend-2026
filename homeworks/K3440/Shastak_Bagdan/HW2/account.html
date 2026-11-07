@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
 
 <header class="site-header shadow-sm position-sticky top-0">
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
-        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
         JobHub
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -32,7 +34,7 @@
   </nav>
 </header>
 
-<main class="flex-grow-1 py-4">
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -48,8 +50,8 @@
           <div class="flex-grow-1">
             <h1 class="h3 mb-1" id="profileName">Денис Фёдоров</h1>
             <div class="text-muted mb-2">
-              <i class="bi bi-geo-alt me-1"></i><span id="profileCity">Санкт-Петербург</span> · 
-              <i class="bi bi-envelope ms-2 me-1"></i><span id="profileEmail">faralones67@gmail.com</span>
+              <i aria-hidden="true" class="bi bi-geo-alt me-1"></i><span id="profileCity">Санкт-Петербург</span> · 
+              <i aria-hidden="true" class="bi bi-envelope ms-2 me-1"></i><span id="profileEmail">faralones67@gmail.com</span>
             </div>
             <div class="d-flex flex-wrap gap-2" id="profileSkills">
               <span class="badge skill-badge">JavaScript</span>
@@ -60,9 +62,9 @@
             </div>
           </div>
           <div class="d-flex flex-column gap-2">
-            <a href="#resume" class="btn btn-primary" data-section-link="resume"><i class="bi bi-file-earmark-text me-1"></i>Моё резюме</a>
+            <a href="#resume" class="btn btn-primary" data-section-link="resume"><i aria-hidden="true" class="bi bi-file-earmark-text me-1"></i>Моё резюме</a>
             <button type="button" class="btn btn-outline-secondary" data-toast="Настройки профиля сохранены">
-              <i class="bi bi-gear me-1"></i>Настройки
+              <i aria-hidden="true" class="bi bi-gear me-1"></i>Настройки
             </button>
           </div>
         </div>
@@ -72,21 +74,21 @@
     <div class="row g-4">
       <aside class="col-lg-3">
         <div class="card border-0 shadow-sm">
-          <div class="list-group list-group-flush" id="accountNav" role="tablist">
-            <a href="#overview" class="list-group-item list-group-item-action active py-3" data-section="overview">
-              <i class="bi bi-speedometer2 me-2"></i>Обзор
+          <div class="list-group list-group-flush" id="accountNav" role="group" aria-label="Разделы личного кабинета">
+            <a href="#overview" class="list-group-item list-group-item-action active py-3" data-section="overview" aria-current="true">
+              <i aria-hidden="true" class="bi bi-speedometer2 me-2"></i>Обзор
             </a>
             <a href="#resume" class="list-group-item list-group-item-action py-3" data-section="resume">
-              <i class="bi bi-file-earmark-person me-2"></i>Резюме
+              <i aria-hidden="true" class="bi bi-file-earmark-person me-2"></i>Резюме
             </a>
             <a href="#applications" class="list-group-item list-group-item-action py-3" data-section="applications">
-              <i class="bi bi-send me-2"></i>Мои отклики <span class="badge text-bg-primary ms-1">4</span>
+              <i aria-hidden="true" class="bi bi-send me-2"></i>Мои отклики <span class="badge text-bg-primary ms-1">4</span>
             </a>
             <a href="#favorites" class="list-group-item list-group-item-action py-3" data-section="favorites">
-              <i class="bi bi-heart me-2"></i>Избранное
+              <i aria-hidden="true" class="bi bi-heart me-2"></i>Избранное
             </a>
             <a href="#settings" class="list-group-item list-group-item-action py-3" data-section="settings">
-              <i class="bi bi-gear me-2"></i>Настройки
+              <i aria-hidden="true" class="bi bi-gear me-2"></i>Настройки
             </a>
           </div>
         </div>
@@ -101,7 +103,7 @@
                 <div class="card-body">
                   <div class="small text-muted mb-1">Просмотры резюме</div>
                   <div class="stat-value text-primary">127</div>
-                  <div class="small text-success"><i class="bi bi-arrow-up"></i> +18 за неделю</div>
+                  <div class="small text-success"><i aria-hidden="true" class="bi bi-arrow-up"></i> +18 за неделю</div>
                 </div>
               </div>
             </div>
@@ -132,6 +134,7 @@
             </div>
             <div class="table-responsive">
               <table class="table align-middle mb-0">
+<caption class="visually-hidden">Последние отклики</caption>
                 <thead class="table-light">
                   <tr>
                     <th scope="col">Вакансия</th>
@@ -153,10 +156,10 @@
               <div class="d-flex gap-2">
                 <span class="badge text-bg-success-subtle text-success-emphasis align-self-center">Опубликовано</span>
                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editResumeModal">
-                  <i class="bi bi-pencil me-1"></i>Редактировать
+                  <i aria-hidden="true" class="bi bi-pencil me-1"></i>Редактировать
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-toast="Резюме скачано в PDF">
-                  <i class="bi bi-download"></i>
+                <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="Скачать резюме в PDF" data-toast="Резюме скачано в PDF">
+                  <i aria-hidden="true" class="bi bi-download"></i>
                 </button>
               </div>
             </div>
@@ -223,6 +226,7 @@
             </div>
             <div class="table-responsive">
               <table class="table align-middle mb-0">
+<caption class="visually-hidden">Мои отклики</caption>
                 <thead class="table-light">
                   <tr>
                     <th scope="col">Вакансия</th>
@@ -247,25 +251,25 @@
           <div class="card border-0 shadow-sm">
             <div class="card-body p-4">
               <h2 class="h5 mb-4">Настройки профиля</h2>
-              <form class="needs-validation row g-3" novalidate>
+              <form class="needs-validation row g-3" novalidate aria-label="Настройки профиля">
                 <div class="col-md-6">
                   <label for="setName" class="form-label">Имя</label>
-                  <input type="text" class="form-control" id="setName" value="Денис" required>
+                  <input type="text" class="form-control" id="setName" autocomplete="given-name" value="Денис" required>
                   <div class="invalid-feedback">Укажите имя.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="setLastName" class="form-label">Фамилия</label>
-                  <input type="text" class="form-control" id="setLastName" value="Фёдоров" required>
+                  <input type="text" class="form-control" id="setLastName" autocomplete="family-name" value="Фёдоров" required>
                   <div class="invalid-feedback">Укажите фамилию.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="setEmail" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="setEmail" value="faralones67@gmail.com" required>
+                  <input type="email" class="form-control" id="setEmail" autocomplete="email" value="faralones67@gmail.com" required>
                   <div class="invalid-feedback">Введите корректный email.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="setCity" class="form-label">Город</label>
-                  <input type="text" class="form-control" id="setCity" value="Санкт-Петербург">
+                  <input type="text" class="form-control" id="setCity" autocomplete="address-level2" value="Санкт-Петербург">
                 </div>
                 <div class="col-12">
                   <label for="setAbout" class="form-label">О себе</label>
@@ -368,6 +372,7 @@
 <script src="js/auth.js"></script>
 <script src="js/header-auth.js"></script>
 <script src="js/profile.js"></script>
+<script src="js/a11y.js"></script>
 <script src="js/main.js"></script>
 <script>
   document.querySelectorAll('[data-section-link]').forEach(function (link) {

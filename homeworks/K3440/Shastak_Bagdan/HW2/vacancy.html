@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
 
 <header class="site-header shadow-sm position-sticky top-0">
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
-        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
         JobHub
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -33,7 +35,7 @@
   </nav>
 </header>
 
-<main class="flex-grow-1 py-4">
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -49,7 +51,7 @@
         <div class="card border-0 shadow-sm mb-4">
           <div class="card-body p-4">
             <div class="d-flex flex-wrap gap-3 align-items-start">
-              <span class="company-logo bg-primary-subtle text-primary" style="width:64px;height:64px;font-size:1.6rem;">Я</span>
+              <span aria-hidden="true" class="company-logo bg-primary-subtle text-primary" style="width:64px;height:64px;font-size:1.6rem;" id="vLogo">Я</span>
               <div class="flex-grow-1">
                 <h1 class="h3 mb-2" id="vTitle">Senior Frontend-разработчик</h1>
                 <div class="mb-2"><a href="companies.html" class="link-primary fw-semibold" id="vCompany">Яндекс</a>
@@ -61,11 +63,11 @@
             </div>
 
             <div class="d-flex flex-wrap gap-2 mt-4" id="vMeta">
-              <span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>Москва</span>
-              <span class="badge meta-badge"><i class="bi bi-laptop me-1"></i>Удалённо</span>
-              <span class="badge meta-badge"><i class="bi bi-briefcase me-1"></i>Полная занятость</span>
-              <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>Опыт 3–6 лет</span>
-              <span class="badge meta-badge"><i class="bi bi-clock-history me-1"></i>Опубликовано 5 ноября</span>
+              <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-geo-alt me-1"></i>Москва</span>
+              <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-laptop me-1"></i>Удалённо</span>
+              <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-briefcase me-1"></i>Полная занятость</span>
+              <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-bar-chart me-1"></i>Опыт 3–6 лет</span>
+              <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-clock-history me-1"></i>Опубликовано 5 ноября</span>
             </div>
           </div>
         </div>
@@ -94,12 +96,8 @@
               <li>Навыки написания и поддержки автотестов (Jest, Playwright)</li>
             </ul>
 
-            <h2 class="h5 mt-4 mb-3">Будет плюсом</h2>
-            <ul class="requirement-list mb-0">
-              <li>Опыт работы с SSR/Next.js</li>
-              <li>Знание node.js</li>
-              <li>Вклад в open-source проекты</li>
-            </ul>
+            <h2 class="h5 mt-4 mb-3">Ключевые навыки</h2>
+            <ul class="requirement-list mb-0" id="vSkills"></ul>
           </div>
         </div>
 
@@ -107,26 +105,25 @@
           <div class="card-body p-4">
             <h2 class="h5 mb-3">О компании</h2>
             <div class="d-flex gap-3 align-items-center mb-3">
-              <span class="company-logo bg-primary-subtle text-primary" style="width:64px;height:64px;font-size:1.6rem;">Я</span>
+              <span aria-hidden="true" class="company-logo bg-primary-subtle text-primary" style="width:64px;height:64px;font-size:1.6rem;" id="cLogo">Я</span>
               <div>
-                <div class="fw-bold">Яндекс</div>
-                <div class="small text-muted">Активных вакансий: 148</div>
+                <div class="fw-bold" id="cName">Яндекс</div>
+                <div class="small text-muted" id="cVacancies">Активных вакансий: 148</div>
               </div>
             </div>
-            <p class="text-muted">Технологическая компания, которая создаёт сервисы для поиска информации, навигации,
-              развлечений и образования. Штат насчитывает более 20 000 сотрудников в разных странах.</p>
+            <p class="text-muted" id="cDesc"></p>
             <div class="row g-3 mb-3">
               <div class="col-sm-4">
                 <div class="small text-muted">Отрасль</div>
-                <div class="fw-semibold">IT и телеком</div>
+                <div class="fw-semibold" id="cIndustry">IT и телеком</div>
               </div>
               <div class="col-sm-4">
                 <div class="small text-muted">Сотрудников</div>
-                <div class="fw-semibold">20 000+</div>
+                <div class="fw-semibold" id="cSize">20 000+</div>
               </div>
               <div class="col-sm-4">
                 <div class="small text-muted">Сайт</div>
-                <a href="#" class="fw-semibold">yandex.ru</a>
+                <a href="#" class="fw-semibold" id="cSite">yandex.ru</a>
               </div>
             </div>
             <a href="companies.html" class="btn btn-outline-primary btn-sm">Все вакансии компании</a>
@@ -139,28 +136,28 @@
           <div class="card border-0 shadow-sm mb-3">
             <div class="card-body p-4">
               <button type="button" class="btn btn-primary btn-lg w-100 mb-2" id="respondBtn">
-                <i class="bi bi-send me-1"></i>Откликнуться
+                <i aria-hidden="true" class="bi bi-send me-1"></i>Откликнуться
               </button>
               <div class="d-flex gap-2">
-                <button type="button" class="btn btn-outline-secondary flex-fill" data-toast="Вакансия добавлена в избранное">
-                  <i class="bi bi-heart"></i> В избранное
+                <button type="button" class="btn btn-outline-secondary flex-fill" id="favBtn">
+                  <i aria-hidden="true" class="bi bi-heart"></i> <span>В избранное</span>
                 </button>
                 <button type="button" class="btn btn-outline-secondary flex-fill" data-toast="Ссылка на вакансию скопирована">
-                  <i class="bi bi-share"></i> Поделиться
+                  <i aria-hidden="true" class="bi bi-share"></i> Поделиться
                 </button>
               </div>
               <hr>
               <dl class="row small mb-0">
                 <dt class="col-6 text-muted fw-normal">Зарплата</dt>
-                <dd class="col-6 text-end fw-semibold mb-2">от 280 000 ₽</dd>
+                <dd class="col-6 text-end fw-semibold mb-2" id="sSalary">от 280 000 ₽</dd>
                 <dt class="col-6 text-muted fw-normal">Опыт</dt>
-                <dd class="col-6 text-end fw-semibold mb-2">3–6 лет</dd>
+                <dd class="col-6 text-end fw-semibold mb-2" id="sExp">3–6 лет</dd>
                 <dt class="col-6 text-muted fw-normal">Формат</dt>
-                <dd class="col-6 text-end fw-semibold mb-2">Удалённо</dd>
+                <dd class="col-6 text-end fw-semibold mb-2" id="sFormat">Удалённо</dd>
                 <dt class="col-6 text-muted fw-normal">Город</dt>
-                <dd class="col-6 text-end fw-semibold mb-2">Москва</dd>
+                <dd class="col-6 text-end fw-semibold mb-2" id="sCity">Москва</dd>
                 <dt class="col-6 text-muted fw-normal">Тип занятости</dt>
-                <dd class="col-6 text-end fw-semibold mb-0">Полная</dd>
+                <dd class="col-6 text-end fw-semibold mb-0" id="sEmployment">Полная</dd>
               </dl>
             </div>
           </div>
@@ -168,21 +165,8 @@
           <div class="card border-0 shadow-sm">
             <div class="card-body p-4">
               <h2 class="h6 mb-1">Похожие вакансии</h2>
-              <p class="small text-muted mb-3">Другие предложения в IT</p>
-              <div class="d-flex flex-column gap-3">
-                <a href="vacancy.html" class="text-decoration-none">
-                  <div class="fw-semibold text-dark">Backend-разработчик Python</div>
-                  <div class="small text-muted">Ozon · 220 000 – 300 000 ₽</div>
-                </a>
-                <a href="vacancy.html" class="text-decoration-none">
-                  <div class="fw-semibold text-dark">UX/UI-дизайнер продукта</div>
-                  <div class="small text-muted">МТС Digital · до 210 000 ₽</div>
-                </a>
-                <a href="vacancy.html" class="text-decoration-none">
-                  <div class="fw-semibold text-dark">CTO / Технический директор</div>
-                  <div class="small text-muted">Тинькофф · от 400 000 ₽</div>
-                </a>
-              </div>
+              <p class="small text-muted mb-3" id="vSimilarLabel">Другие предложения</p>
+              <div class="d-flex flex-column gap-3" id="vSimilar"></div>
             </div>
           </div>
         </div>
@@ -196,24 +180,24 @@
 <div class="modal fade" id="respondModal" tabindex="-1" aria-labelledby="respondModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      <form id="respondForm" novalidate>
+      <form id="respondForm" novalidate aria-label="Отклик на вакансию">
         <div class="modal-header">
           <h2 class="modal-title h5" id="respondModalLabel">Отклик на вакансию «Senior Frontend-разработчик»</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
         </div>
         <div class="modal-body">
           <div class="alert alert-light border small mb-3">
-            <i class="bi bi-info-circle me-1"></i>Будет отправлено резюме «Frontend-разработчик · Senior» из вашего личного кабинета.
+            <i aria-hidden="true" class="bi bi-info-circle me-1"></i>Будет отправлено резюме «Frontend-разработчик · Senior» из вашего личного кабинета.
             <a href="account.html" class="ms-1">Изменить резюме</a>
           </div>
           <div class="mb-3">
             <label for="respondName" class="form-label">Имя и фамилия</label>
-            <input type="text" class="form-control" id="respondName" value="Денис Фёдоров" required>
+            <input type="text" class="form-control" id="respondName" autocomplete="name" value="Денис Фёдоров" required>
             <div class="invalid-feedback">Укажите имя.</div>
           </div>
           <div class="mb-3">
             <label for="respondEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="respondEmail" placeholder="you@example.com" required>
+            <input type="email" class="form-control" id="respondEmail" autocomplete="email" placeholder="you@example.com" required>
             <div class="invalid-feedback">Введите корректный email.</div>
           </div>
           <div class="mb-3">
@@ -228,7 +212,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
-          <button type="submit" class="btn btn-primary"><i class="bi bi-send me-1"></i>Отправить отклик</button>
+          <button type="submit" class="btn btn-primary"><i aria-hidden="true" class="bi bi-send me-1"></i>Отправить отклик</button>
         </div>
       </form>
     </div>
@@ -238,7 +222,7 @@
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form id="loginModalForm" novalidate>
+      <form id="loginModalForm" novalidate aria-label="Вход">
         <div class="modal-header">
           <h2 class="modal-title h5" id="loginModalLabel">Вход в аккаунт</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -246,12 +230,12 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com" required>
+            <input type="email" class="form-control" id="loginEmail" autocomplete="email" placeholder="you@example.com" required>
             <div class="invalid-feedback">Введите корректный email.</div>
           </div>
           <div class="mb-3">
             <label for="loginPassword" class="form-label">Пароль</label>
-            <input type="password" class="form-control" id="loginPassword" minlength="6" required>
+            <input type="password" class="form-control" id="loginPassword" autocomplete="current-password" minlength="6" required>
             <div class="invalid-feedback">Не менее 6 символов.</div>
           </div>
         </div>
@@ -275,12 +259,12 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="regName" class="form-label">Имя</label>
-            <input type="text" class="form-control" id="regName" required>
+            <input type="text" class="form-control" id="regName" autocomplete="name" required>
             <div class="invalid-feedback">Укажите имя.</div>
           </div>
           <div class="mb-3">
             <label for="regEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="regEmail" required>
+            <input type="email" class="form-control" id="regEmail" autocomplete="email" required>
             <div class="invalid-feedback">Введите корректный email.</div>
           </div>
           <a href="index.html" class="small">Полная форма регистрации</a>
@@ -307,6 +291,7 @@
 <script src="js/api.js"></script>
 <script src="js/header-auth.js"></script>
 <script src="js/vacancy-page.js"></script>
+<script src="js/a11y.js"></script>
 <script src="js/main.js"></script>
 <script>
   document.getElementById('respondBtn').addEventListener('click', function () {

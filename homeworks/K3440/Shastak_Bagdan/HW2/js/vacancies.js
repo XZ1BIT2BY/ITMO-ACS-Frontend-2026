@@ -21,18 +21,18 @@
   function listCard(v, isFav) {
     const [icon, format] = FORMAT[v.workFormat] || FORMAT.office;
     return `
-      <article class="vacancy-item card border-0" data-id="${v.id}" data-title="${esc(v.title)}"
+      <article class="vacancy-item card border-0" data-id="${v.id}" aria-labelledby="vacancy-title-${v.id}" data-title="${esc(v.title)}"
                data-company="${esc(v.companyName)}" data-industry="${esc(v.industry)}"
                data-salary="${v.salaryFrom || v.salaryTo || 0}"
                data-experience="${v.experience === '0' ? 'none' : esc(v.experience)}"
                data-remote="${v.workFormat === 'remote'}" data-date="${String(v.publishedDate || '').replace(/-/g, '')}">
         <div class="card-body">
           <div class="d-flex gap-3">
-            <span class="company-logo ${logoClass(v.companyName)}">${esc(v.companyLogo)}</span>
+            <span aria-hidden="true" class="company-logo ${logoClass(v.companyName)}">${esc(v.companyLogo)}</span>
             <div class="flex-grow-1">
               <div class="d-flex flex-wrap justify-content-between gap-2">
                 <div>
-                  <h2 class="h5 mb-1"><a class="vacancy-title" href="vacancy.html?id=${v.id}">${esc(v.title)}</a></h2>
+                  <h2 class="h5 mb-1" id="vacancy-title-${v.id}"><a class="vacancy-title" href="vacancy.html?id=${v.id}">${esc(v.title)}</a></h2>
                   <div class="small"><a href="companies.html" class="link-secondary">${esc(v.companyName)}</a> ·
                     <span class="text-muted">${esc(INDUSTRY[v.industry] || v.industry)}</span></div>
                 </div>
@@ -40,15 +40,15 @@
                   <div class="fw-bold salary">${esc(formatSalary(v))}</div>
                   ${isNew(v) ? '<span class="badge text-bg-success-subtle text-success-emphasis">Новая</span>' : ''}
                   <button type="button" class="btn btn-sm btn-link p-0 ms-2 align-baseline" data-fav="${v.id}"
-                          title="В избранное" aria-label="В избранное">
-                    <i class="bi ${isFav ? 'bi-heart-fill text-danger' : 'bi-heart'}"></i></button>
+                          aria-pressed="${isFav}" aria-label="${isFav ? 'Убрать из избранного' : 'Добавить в избранное'}: ${esc(v.title)}">
+                    <i aria-hidden="true" class="bi ${isFav ? 'bi-heart-fill text-danger' : 'bi-heart'}"></i></button>
                 </div>
               </div>
               <div class="d-flex flex-wrap gap-2 my-3">
-                ${v.location ? `<span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>${esc(v.location)}</span>` : ''}
-                <span class="badge meta-badge"><i class="bi bi-${icon} me-1"></i>${format}</span>
-                <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>${esc(EXPERIENCE[v.experience] || '')}</span>
-                <span class="badge meta-badge"><i class="bi bi-clock me-1"></i>${esc(EMPLOYMENT[v.employmentType] || '')}</span>
+                ${v.location ? `<span class="badge meta-badge"><i aria-hidden="true" class="bi bi-geo-alt me-1"></i>${esc(v.location)}</span>` : ''}
+                <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-${icon} me-1"></i>${format}</span>
+                <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-bar-chart me-1"></i>${esc(EXPERIENCE[v.experience] || '')}</span>
+                <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-clock me-1"></i>${esc(EMPLOYMENT[v.employmentType] || '')}</span>
               </div>
               <p class="small text-muted mb-0">${esc(v.description)}</p>
             </div>
@@ -65,6 +65,7 @@
     } catch (err) {
       list.innerHTML = '<div class="alert alert-danger">Не удалось загрузить вакансии. Запущен ли сервер (npm start)?</div>';
       delete list.dataset.loading;
+      list.setAttribute('aria-busy', 'false');
       return;
     }
 
@@ -75,6 +76,7 @@
 
     list.innerHTML = vacancies.map(v => listCard(v, favs.has(v.id))).join('');
     delete list.dataset.loading;
+    list.setAttribute('aria-busy', 'false');
     if (window.applyVacancyFilters) window.applyVacancyFilters();   // счётчик и «ничего не найдено»
 
     list.addEventListener('click', async function (e) {
@@ -87,7 +89,10 @@
       try {
         if (favs.has(id)) { await api.removeFromFavorites(id); favs.delete(id); }
         else { await api.addToFavorites(id); favs.add(id); }
-        btn.querySelector('i').className = 'bi ' + (favs.has(id) ? 'bi-heart-fill text-danger' : 'bi-heart');
+        const on = favs.has(id);
+        btn.querySelector('i').className = 'bi ' + (on ? 'bi-heart-fill text-danger' : 'bi-heart');
+        btn.setAttribute('aria-pressed', String(on));
+        btn.setAttribute('aria-label', (on ? 'Убрать из избранного' : 'Добавить в избранное') + ': ' + btn.closest('article').dataset.title);
         toast(favs.has(id) ? 'Добавлено в избранное' : 'Удалено из избранного');
       } catch (err) {
         toast(err.message, 'text-bg-danger');
@@ -107,7 +112,7 @@
             <div class="card-body d-flex flex-column">
               <div class="d-flex justify-content-between align-items-start gap-3">
                 <div class="d-flex gap-3">
-                  <span class="company-logo ${logoClass(v.companyName)}">${esc(v.companyLogo)}</span>
+                  <span aria-hidden="true" class="company-logo ${logoClass(v.companyName)}">${esc(v.companyLogo)}</span>
                   <div>
                     <h3 class="h6 mb-1"><a href="vacancy.html?id=${v.id}" class="stretched-link text-dark text-decoration-none">${esc(v.title)}</a></h3>
                     <div class="text-muted small">${esc(v.companyName)} · ${esc(INDUSTRY[v.industry] || v.industry)}</div>
@@ -117,9 +122,9 @@
               </div>
               <div class="mt-3 mb-3 fw-bold text-success">${esc(formatSalary(v))} <span class="fw-normal text-muted small">за месяц</span></div>
               <div class="d-flex flex-wrap gap-2 mt-auto">
-                ${v.location ? `<span class="badge meta-badge"><i class="bi bi-geo-alt me-1"></i>${esc(v.location)}</span>` : ''}
-                <span class="badge meta-badge"><i class="bi bi-${icon} me-1"></i>${format}</span>
-                <span class="badge meta-badge"><i class="bi bi-bar-chart me-1"></i>${esc(EXPERIENCE[v.experience] || '')}</span>
+                ${v.location ? `<span class="badge meta-badge"><i aria-hidden="true" class="bi bi-geo-alt me-1"></i>${esc(v.location)}</span>` : ''}
+                <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-${icon} me-1"></i>${format}</span>
+                <span class="badge meta-badge"><i aria-hidden="true" class="bi bi-bar-chart me-1"></i>${esc(EXPERIENCE[v.experience] || '')}</span>
               </div>
             </div>
           </article>

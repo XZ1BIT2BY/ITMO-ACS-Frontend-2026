@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
 
 <header class="site-header shadow-sm position-sticky top-0">
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
-        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
         JobHub
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -29,7 +31,7 @@
         </ul>
         <div class="d-flex gap-2 mt-3 mt-lg-0">
           <a href="login.html" class="btn btn-outline-primary">
-            <i class="bi bi-box-arrow-in-right me-1"></i>Вход
+            <i aria-hidden="true" class="bi bi-box-arrow-in-right me-1"></i>Вход
           </a>
         </div>
       </div>
@@ -37,7 +39,7 @@
   </nav>
 </header>
 
-<main class="flex-grow-1 py-5 d-flex align-items-center">
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-5 d-flex align-items-center">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9 col-lg-7">
@@ -52,20 +54,20 @@
           <div class="card-body p-4 p-md-5">
             <div class="text-center mb-4">
               <span class="brand-mark mx-auto mb-2" style="width:44px;height:44px;font-size:1.3rem;">
-                <i class="bi bi-briefcase-fill"></i>
+                <i aria-hidden="true" class="bi bi-briefcase-fill"></i>
               </span>
               <h1 class="h4 fw-bold">Создайте аккаунт на JobHub</h1>
               <p class="text-muted small">Выберите тип профиля и заполните базовые данные</p>
             </div>
 
-            <form novalidate id="registerPageForm">
+            <form novalidate id="registerPageForm" aria-label="Регистрация">
               <div class="mb-4">
                 <label class="form-label small fw-semibold text-muted text-uppercase d-block text-center">Кем вы регистрируетесь?</label>
                 <div class="row g-2">
                   <div class="col-6">
                     <input type="radio" class="btn-check" name="pageAccountType" id="regTypeSeeker" value="seeker" checked>
                     <label class="btn btn-outline-primary w-100 p-3 h-100 d-flex flex-column align-items-center justify-content-center text-center" for="regTypeSeeker">
-                      <i class="bi bi-person-workspace fs-3 mb-1"></i>
+                      <i aria-hidden="true" class="bi bi-person-workspace fs-3 mb-1"></i>
                       <span class="fw-semibold">Соискатель</span>
                       <small class="text-muted d-block mt-1">Ищу работу и создаю резюме</small>
                     </label>
@@ -73,7 +75,7 @@
                   <div class="col-6">
                     <input type="radio" class="btn-check" name="pageAccountType" id="regTypeEmployer" value="employer">
                     <label class="btn btn-outline-primary w-100 p-3 h-100 d-flex flex-column align-items-center justify-content-center text-center" for="regTypeEmployer">
-                      <i class="bi bi-buildings fs-3 mb-1"></i>
+                      <i aria-hidden="true" class="bi bi-buildings fs-3 mb-1"></i>
                       <span class="fw-semibold">Работодатель</span>
                       <small class="text-muted d-block mt-1">Публикую вакансии и ищу людей</small>
                     </label>
@@ -84,39 +86,39 @@
               <div class="row g-3">
                 <div class="col-md-6" id="fieldFirstName">
                   <label for="pageRegFirstName" class="form-label">Имя</label>
-                  <input type="text" class="form-control" id="pageRegFirstName" placeholder="Иван" required>
+                  <input type="text" class="form-control" id="pageRegFirstName" autocomplete="given-name" placeholder="Иван" required>
                   <div class="invalid-feedback">Укажите имя.</div>
                 </div>
                 <div class="col-md-6" id="fieldLastName">
                   <label for="pageRegLastName" class="form-label">Фамилия</label>
-                  <input type="text" class="form-control" id="pageRegLastName" placeholder="Иванов" required>
+                  <input type="text" class="form-control" id="pageRegLastName" autocomplete="family-name" placeholder="Иванов" required>
                   <div class="invalid-feedback">Укажите фамилию.</div>
                 </div>
 
                 <div class="col-12 d-none" id="fieldCompany">
                   <label for="pageRegCompany" class="form-label">Название компании</label>
-                  <input type="text" class="form-control" id="pageRegCompany" placeholder="ООО «Технологии будущего»">
+                  <input type="text" class="form-control" id="pageRegCompany" autocomplete="organization" placeholder="ООО «Технологии будущего»">
                   <div class="invalid-feedback">Укажите компанию.</div>
                 </div>
 
                 <div class="col-md-6">
                   <label for="pageRegEmail" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="pageRegEmail" placeholder="you@example.com" required>
+                  <input type="email" class="form-control" id="pageRegEmail" autocomplete="email" placeholder="you@example.com" required>
                   <div class="invalid-feedback">Введите корректный email.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="pageRegPhone" class="form-label">Телефон</label>
-                  <input type="tel" class="form-control" id="pageRegPhone" placeholder="+7 (999) 000-00-00">
+                  <input type="tel" class="form-control" id="pageRegPhone" autocomplete="tel" placeholder="+7 (999) 000-00-00">
                 </div>
 
                 <div class="col-md-6">
                   <label for="pageRegPassword" class="form-label">Пароль</label>
-                  <input type="password" class="form-control" id="pageRegPassword" placeholder="Минимум 6 символов" minlength="6" required>
+                  <input type="password" class="form-control" id="pageRegPassword" autocomplete="new-password" placeholder="Минимум 6 символов" minlength="6" required>
                   <div class="invalid-feedback">Пароль должен содержать от 6 символов.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="pageRegPasswordRepeat" class="form-label">Повторите пароль</label>
-                  <input type="password" class="form-control" id="pageRegPasswordRepeat" placeholder="Повторите пароль" minlength="6" required>
+                  <input type="password" class="form-control" id="pageRegPasswordRepeat" autocomplete="new-password" placeholder="Повторите пароль" minlength="6" required>
                   <div class="invalid-feedback" id="pagePwMatchFeedback">Пароли должны совпадать.</div>
                 </div>
 
@@ -132,7 +134,7 @@
 
                 <div class="col-12 mt-4">
                   <button type="submit" class="btn btn-primary w-100 py-2">
-                    <i class="bi bi-person-check me-1"></i>Зарегистрироваться
+                    <i aria-hidden="true" class="bi bi-person-check me-1"></i>Зарегистрироваться
                   </button>
                 </div>
               </div>
@@ -163,6 +165,7 @@
 <script src="js/api.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/header-auth.js"></script>
+<script src="js/a11y.js"></script>
 <script src="js/main.js"></script>
 <script>
   const typeSeeker = document.getElementById('regTypeSeeker');

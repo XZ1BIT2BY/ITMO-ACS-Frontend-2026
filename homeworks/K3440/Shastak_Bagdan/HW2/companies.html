@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
 
 <header class="site-header shadow-sm position-sticky top-0">
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
-        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
         JobHub
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -33,7 +35,7 @@
   </nav>
 </header>
 
-<main class="flex-grow-1 py-4">
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -50,7 +52,7 @@
       <div class="col-lg-5">
         <label for="companySearch" class="visually-hidden">Поиск компании</label>
         <div class="input-group">
-          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+          <span class="input-group-text bg-white"><i aria-hidden="true" class="bi bi-search"></i></span>
           <input type="search" class="form-control" id="companySearch" placeholder="Найти компанию по названию">
         </div>
       </div>
@@ -63,7 +65,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-primary text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Я</span>
+              <span aria-hidden="true" class="company-logo bg-primary text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Я</span>
               <div>
                 <h2 class="h6 mb-0">Яндекс</h2>
                 <div class="small text-muted">IT и телеком</div>
@@ -83,7 +85,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-success text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">С</span>
+              <span aria-hidden="true" class="company-logo bg-success text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">С</span>
               <div>
                 <h2 class="h6 mb-0">СберБанк</h2>
                 <div class="small text-muted">Финансы и банки</div>
@@ -103,7 +105,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-danger text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">М</span>
+              <span aria-hidden="true" class="company-logo bg-danger text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">М</span>
               <div>
                 <h2 class="h6 mb-0">МТС Digital</h2>
                 <div class="small text-muted">IT и телеком</div>
@@ -123,7 +125,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-info text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">O</span>
+              <span aria-hidden="true" class="company-logo bg-info text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">O</span>
               <div>
                 <h2 class="h6 mb-0">Ozon</h2>
                 <div class="small text-muted">Торговля</div>
@@ -143,7 +145,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-warning text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Т</span>
+              <span aria-hidden="true" class="company-logo bg-warning text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Т</span>
               <div>
                 <h2 class="h6 mb-0">Тинькофф</h2>
                 <div class="small text-muted">Финансы и банки</div>
@@ -163,7 +165,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-secondary text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">S</span>
+              <span aria-hidden="true" class="company-logo bg-secondary text-white" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">S</span>
               <div>
                 <h2 class="h6 mb-0">SkillBox</h2>
                 <div class="small text-muted">Образование</div>
@@ -183,7 +185,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-danger-subtle text-danger" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">МГ</span>
+              <span aria-hidden="true" class="company-logo bg-danger-subtle text-danger" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">МГ</span>
               <div>
                 <h2 class="h6 mb-0">Медгородок</h2>
                 <div class="small text-muted">Медицина</div>
@@ -203,7 +205,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-info-subtle text-info-emphasis" style="width:64px;height:64px;font-size:1.4rem;border:4px solid #fff;">VK</span>
+              <span aria-hidden="true" class="company-logo bg-info-subtle text-info-emphasis" style="width:64px;height:64px;font-size:1.4rem;border:4px solid #fff;">VK</span>
               <div>
                 <h2 class="h6 mb-0">ВКонтакте</h2>
                 <div class="small text-muted">Маркетинг и реклама</div>
@@ -223,7 +225,7 @@
           <div class="company-banner"></div>
           <div class="card-body">
             <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-              <span class="company-logo bg-success-subtle text-success" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Л</span>
+              <span aria-hidden="true" class="company-logo bg-success-subtle text-success" style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">Л</span>
               <div>
                 <h2 class="h6 mb-0">Леруа Мерлен</h2>
                 <div class="small text-muted">Торговля</div>
@@ -242,7 +244,7 @@
 
     <div id="companyEmpty" class="card border-0 shadow-sm d-none mt-4">
       <div class="card-body text-center py-5">
-        <i class="bi bi-building display-4 text-muted"></i>
+        <i aria-hidden="true" class="bi bi-building display-4 text-muted"></i>
         <h2 class="h5 mt-3">Компания не найдена</h2>
         <p class="text-muted mb-0">Проверьте написание названия или сбросьте поиск.</p>
       </div>
@@ -272,17 +274,17 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com" required>
+            <input type="email" class="form-control" id="loginEmail" autocomplete="email" placeholder="you@example.com" required>
             <div class="invalid-feedback">Введите корректный email.</div>
           </div>
           <div class="mb-3">
             <label for="loginPassword" class="form-label">Пароль</label>
-            <input type="password" class="form-control" id="loginPassword" minlength="6" required>
+            <input type="password" class="form-control" id="loginPassword" autocomplete="current-password" minlength="6" required>
             <div class="invalid-feedback">Не менее 6 символов.</div>
           </div>
           <div class="d-grid gap-2 mt-3">
-            <a href="account.html" class="btn btn-outline-secondary"><i class="bi bi-person me-1"></i>Войти как соискатель</a>
-            <a href="employer.html" class="btn btn-outline-secondary"><i class="bi bi-building me-1"></i>Войти как работодатель</a>
+            <a href="account.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-person me-1"></i>Войти как соискатель</a>
+            <a href="employer.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-building me-1"></i>Войти как работодатель</a>
           </div>
         </div>
         <div class="modal-footer">
@@ -305,12 +307,12 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="regName" class="form-label">Имя</label>
-            <input type="text" class="form-control" id="regName" required>
+            <input type="text" class="form-control" id="regName" autocomplete="name" required>
             <div class="invalid-feedback">Укажите имя.</div>
           </div>
           <div class="mb-3">
             <label for="regEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="regEmail" required>
+            <input type="email" class="form-control" id="regEmail" autocomplete="email" required>
             <div class="invalid-feedback">Введите корректный email.</div>
           </div>
           <a href="index.html" class="small">Полная форма регистрации</a>
@@ -334,6 +336,7 @@
 </div>
 
 <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/a11y.js"></script>
 <script src="js/main.js"></script>
 <script src="js/header-auth.js"></script>
 <script src="js/api.js"></script>
@@ -348,7 +351,7 @@
             <div class="company-banner"></div>
             <div class="card-body">
               <div class="d-flex align-items-center gap-3 mb-3 mt-n5">
-                <span class="company-logo bg-primary text-white"
+                <span aria-hidden="true" class="company-logo bg-primary text-white"
                       style="width:64px;height:64px;font-size:1.6rem;border:4px solid #fff;">${c.logo}</span>
                 <div><h2 class="h6 mb-0">${c.name}</h2>
                      <div class="small text-muted">${c.industry}</div></div>

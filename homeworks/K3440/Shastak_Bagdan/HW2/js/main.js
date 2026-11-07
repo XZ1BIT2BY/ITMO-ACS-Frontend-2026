@@ -77,6 +77,10 @@
     if (body) body.textContent = message;
     toastEl.classList.remove('text-bg-success', 'text-bg-danger', 'text-bg-primary');
     toastEl.classList.add(variant || 'text-bg-success');
+    // ошибки читаются сразу (assertive), остальное — вежливо (polite)
+    const urgent = variant === 'text-bg-danger';
+    toastEl.setAttribute('role', urgent ? 'alert' : 'status');
+    toastEl.setAttribute('aria-live', urgent ? 'assertive' : 'polite');
     bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 4000 }).show();
   }
   window.showToast = showToast;
@@ -199,8 +203,9 @@
       link.addEventListener('click', function (event) {
         event.preventDefault();
         const target = link.getAttribute('data-section');
-        links.forEach(function (l) { l.classList.remove('active'); });
+        links.forEach(function (l) { l.classList.remove('active'); l.removeAttribute('aria-current'); });
         link.classList.add('active');
+        link.setAttribute('aria-current', 'true');
         sections.forEach(function (section) {
           section.classList.toggle('d-none', section.getAttribute('data-section-panel') !== target);
         });

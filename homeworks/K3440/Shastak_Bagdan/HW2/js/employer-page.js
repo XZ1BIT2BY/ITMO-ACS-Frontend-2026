@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
         <td class="text-muted small text-nowrap">${v.publishedDate
           ? new Date(v.publishedDate).toLocaleDateString('ru-RU') : ''}</td>
         <td class="text-end text-nowrap">
-          <a href="vacancy.html?id=${v.id}" class="btn btn-sm btn-light" title="Открыть"><i class="bi bi-eye"></i></a>
-          <button type="button" class="btn btn-sm btn-light" title="Редактировать" data-edit-vacancy><i class="bi bi-pencil"></i></button>
-          <button type="button" class="btn btn-sm btn-light text-danger" title="Удалить" data-delete-vacancy><i class="bi bi-trash"></i></button>
+          <a href="vacancy.html?id=${v.id}" class="btn btn-sm btn-light" title="Открыть" aria-label="Открыть вакансию «${esc(v.title)}»"><i aria-hidden="true" class="bi bi-eye"></i></a>
+          <button type="button" class="btn btn-sm btn-light" title="Редактировать" aria-label="Редактировать вакансию «${esc(v.title)}»" data-edit-vacancy><i aria-hidden="true" class="bi bi-pencil"></i></button>
+          <button type="button" class="btn btn-sm btn-light text-danger" title="Удалить" aria-label="Удалить вакансию «${esc(v.title)}»" data-delete-vacancy><i aria-hidden="true" class="bi bi-trash"></i></button>
         </td>
       </tr>`).join('')
       : '<tr><td colspan="6" class="text-center text-muted py-4">У вас пока нет вакансий. Нажмите «Добавить».</td></tr>';

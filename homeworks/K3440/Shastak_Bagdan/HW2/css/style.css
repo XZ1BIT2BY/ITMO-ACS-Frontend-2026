@@ -929,3 +929,20 @@ thead.table-light th {
     position: static;
   }
 }
+
+/* ===== Доступность ===== */
+.skip-link:focus { position: fixed; top: .5rem; left: .5rem; z-index: 2000; padding: .6rem 1rem;
+  background: #fff; color: #0b3d91; border-radius: .5rem; box-shadow: 0 0 0 3px #0b3d91; text-decoration: none; font-weight: 600; }
+main:focus { outline: none; }
+a:focus-visible, button:focus-visible, .btn:focus-visible, .form-control:focus-visible,
+.form-select:focus-visible, .form-check-input:focus-visible, .list-group-item:focus-visible,
+[tabindex]:focus-visible, summary:focus-visible {
+  outline: 3px solid #0b3d91; outline-offset: 2px; box-shadow: 0 0 0 5px #fff;
+}
+.btn-check:focus-visible + .btn { outline: 3px solid #0b3d91; outline-offset: 2px; }
+.text-muted { color: #5c636a !important; }
+p a:not(.btn), .small a:not(.btn), .card-text a:not(.btn) { text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

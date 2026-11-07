@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
 
 <header class="site-header shadow-sm position-sticky top-0">
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
-        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
         JobHub
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -33,7 +35,7 @@
   </nav>
 </header>
 
-<main class="flex-grow-1 py-4">
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
   <div class="container">
 
     <nav aria-label="breadcrumb">
@@ -47,14 +49,14 @@
       <aside class="col-lg-3">
         <div class="card filters-panel border-0 shadow-sm">
           <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
-            <h2 class="h6 mb-0"><i class="bi bi-funnel me-1"></i>Фильтры</h2>
+            <h2 class="h6 mb-0"><i aria-hidden="true" class="bi bi-funnel me-1"></i>Фильтры</h2>
             <button type="button" class="btn btn-sm btn-link p-0" id="resetFilters">Сбросить</button>
           </div>
-          <form class="card-body" id="filtersForm">
+          <form class="card-body" id="filtersForm" role="search" aria-label="Фильтры вакансий">
             <div class="mb-3">
               <label for="filterQuery" class="form-label small fw-semibold">Ключевое слово</label>
               <div class="input-group">
-                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                <span class="input-group-text bg-white"><i aria-hidden="true" class="bi bi-search"></i></span>
                 <input type="search" class="form-control" id="filterQuery" name="q" placeholder="Профессия, компания">
               </div>
             </div>
@@ -110,7 +112,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary w-100 d-lg-none">
-              <i class="bi bi-funnel me-1"></i>Применить
+              <i aria-hidden="true" class="bi bi-funnel me-1"></i>Применить
             </button>
           </form>
         </div>
@@ -122,7 +124,7 @@
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
           <div>
             <h1 class="h4 mb-1">Вакансии</h1>
-            <p class="text-muted small mb-0">Найдено: <span id="resultsCount" class="fw-semibold">9</span></p>
+            <p class="text-muted small mb-0" role="status">Найдено: <span id="resultsCount" class="fw-semibold">9</span></p>
           </div>
           <div class="d-flex align-items-center gap-2">
             <label for="sortSelect" class="small text-muted text-nowrap mb-0">Сортировка:</label>
@@ -134,13 +136,13 @@
           </div>
         </div>
 
-        <div id="vacancyList" class="d-flex flex-column gap-3" data-loading="true">
+        <div id="vacancyList" class="d-flex flex-column gap-3" data-loading="true" aria-busy="true">
           <div class="text-center text-muted py-5">Загрузка вакансий…</div>
         </div>
 
-        <div id="emptyState" class="card border-0 shadow-sm d-none">
+        <div id="emptyState" class="card border-0 shadow-sm d-none" role="status">
           <div class="card-body text-center py-5">
-            <i class="bi bi-search display-4 text-muted"></i>
+            <i aria-hidden="true" class="bi bi-search display-4 text-muted"></i>
             <h2 class="h5 mt-3">Вакансии не найдены</h2>
             <p class="text-muted">Попробуйте изменить параметры фильтрации.</p>
             <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('resetFilters').click()">Сбросить фильтры</button>
@@ -174,17 +176,17 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="loginEmail2" class="form-label">Email</label>
-            <input type="email" class="form-control" id="loginEmail2" placeholder="you@example.com" required>
+            <input type="email" class="form-control" id="loginEmail2" autocomplete="email" placeholder="you@example.com" required>
             <div class="invalid-feedback">Введите корректный email.</div>
           </div>
           <div class="mb-3">
             <label for="loginPassword2" class="form-label">Пароль</label>
-            <input type="password" class="form-control" id="loginPassword2" minlength="6" required>
+            <input type="password" class="form-control" id="loginPassword2" autocomplete="current-password" minlength="6" required>
             <div class="invalid-feedback">Не менее 6 символов.</div>
           </div>
           <div class="d-grid gap-2 mt-3">
-            <a href="account.html" class="btn btn-outline-secondary"><i class="bi bi-person me-1"></i>Войти как соискатель</a>
-            <a href="employer.html" class="btn btn-outline-secondary"><i class="bi bi-building me-1"></i>Войти как работодатель</a>
+            <a href="account.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-person me-1"></i>Войти как соискатель</a>
+            <a href="employer.html" class="btn btn-outline-secondary"><i aria-hidden="true" class="bi bi-building me-1"></i>Войти как работодатель</a>
           </div>
         </div>
         <div class="modal-footer">
@@ -207,12 +209,12 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="regName2" class="form-label">Имя</label>
-            <input type="text" class="form-control" id="regName2" required>
+            <input type="text" class="form-control" id="regName2" autocomplete="name" required>
             <div class="invalid-feedback">Укажите имя.</div>
           </div>
           <div class="mb-3">
             <label for="regEmail2" class="form-label">Email</label>
-            <input type="email" class="form-control" id="regEmail2" required>
+            <input type="email" class="form-control" id="regEmail2" autocomplete="email" required>
             <div class="invalid-feedback">Введите корректный email.</div>
           </div>
           <div class="form-check mb-2">
@@ -244,6 +246,7 @@
 <script src="js/auth.js"></script>
 <script src="js/header-auth.js"></script>
 <script src="js/vacancies.js"></script>
+<script src="js/a11y.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

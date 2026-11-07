@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
+<a class="skip-link visually-hidden-focusable" href="#main-content">Перейти к основному содержимому</a>
+
 
 <header class="site-header shadow-sm position-sticky top-0">
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg bg-white" aria-label="Основная навигация">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
-        <span class="brand-mark"><i class="bi bi-briefcase-fill"></i></span>
+        <span class="brand-mark"><i aria-hidden="true" class="bi bi-briefcase-fill"></i></span>
         JobHub
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -33,7 +35,7 @@
   </nav>
 </header>
 
-<main class="flex-grow-1 py-4">
+<main id="main-content" tabindex="-1" class="flex-grow-1 py-4">
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -48,7 +50,7 @@
         <p class="text-muted mb-0">Яндекс · управление вакансиями и откликами</p>
       </div>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newVacancyModal">
-        <i class="bi bi-plus-lg me-1"></i>Разместить вакансию
+        <i aria-hidden="true" class="bi bi-plus-lg me-1"></i>Разместить вакансию
       </button>
     </div>
 
@@ -62,7 +64,7 @@
                 <div class="small text-muted mb-1">Вакансии</div>
                 <div class="stat-value" id="employerVacanciesCount">4</div>
               </div>
-              <span class="stat-icon bg-primary-subtle text-primary"><i class="bi bi-briefcase"></i></span>
+              <span class="stat-icon bg-primary-subtle text-primary"><i aria-hidden="true" class="bi bi-briefcase"></i></span>
             </div>
             <div class="small text-muted mt-2">Активных: <span id="employerActiveCount">3</span></div>
           </div>
@@ -76,9 +78,9 @@
                 <div class="small text-muted mb-1">Просмотры</div>
                 <div class="stat-value">2 418</div>
               </div>
-              <span class="stat-icon bg-success-subtle text-success"><i class="bi bi-eye"></i></span>
+              <span class="stat-icon bg-success-subtle text-success"><i aria-hidden="true" class="bi bi-eye"></i></span>
             </div>
-            <div class="small text-success mt-2"><i class="bi bi-arrow-up"></i> +12% за неделю</div>
+            <div class="small text-success mt-2"><i aria-hidden="true" class="bi bi-arrow-up"></i> +12% за неделю</div>
           </div>
         </div>
       </div>
@@ -90,7 +92,7 @@
                 <div class="small text-muted mb-1">Отклики</div>
                 <div class="stat-value">37</div>
               </div>
-              <span class="stat-icon bg-warning-subtle text-warning"><i class="bi bi-send"></i></span>
+              <span class="stat-icon bg-warning-subtle text-warning"><i aria-hidden="true" class="bi bi-send"></i></span>
             </div>
             <div class="small text-muted mt-2">Новых: 9</div>
           </div>
@@ -104,7 +106,7 @@
                 <div class="small text-muted mb-1">Конверсия</div>
                 <div class="stat-value">14%</div>
               </div>
-              <span class="stat-icon bg-danger-subtle text-danger"><i class="bi bi-graph-up-arrow"></i></span>
+              <span class="stat-icon bg-danger-subtle text-danger"><i aria-hidden="true" class="bi bi-graph-up-arrow"></i></span>
             </div>
             <div class="small text-muted mt-2">Отклик → интервью</div>
           </div>
@@ -118,11 +120,12 @@
           <div class="card-header bg-white py-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
             <h2 class="h6 mb-0">Мои вакансии</h2>
             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newVacancyModal">
-              <i class="bi bi-plus-lg"></i> Добавить
+              <i aria-hidden="true" class="bi bi-plus-lg"></i> Добавить
             </button>
           </div>
           <div class="table-responsive">
             <table class="table align-middle mb-0" id="employerVacancies">
+<caption class="visually-hidden">Мои вакансии</caption>
               <thead class="table-light">
                 <tr>
                   <th scope="col">Вакансия</th>
@@ -155,7 +158,7 @@
                 </div>
                 <div class="dropdown">
                   <button class="btn btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Действия">
-                    <i class="bi bi-three-dots-vertical"></i>
+                    <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li><button class="dropdown-item" data-toast="Приглашение отправлено">Пригласить</button></li>
@@ -171,7 +174,7 @@
                 </div>
                 <div class="dropdown">
                   <button class="btn btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Действия">
-                    <i class="bi bi-three-dots-vertical"></i>
+                    <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li><button class="dropdown-item" data-toast="Приглашение отправлено">Пригласить</button></li>
@@ -187,7 +190,7 @@
                 </div>
                 <div class="dropdown">
                   <button class="btn btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Действия">
-                    <i class="bi bi-three-dots-vertical"></i>
+                    <i aria-hidden="true" class="bi bi-three-dots-vertical"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li><button class="dropdown-item" data-toast="Приглашение отправлено">Пригласить</button></li>
@@ -211,7 +214,7 @@
 <div class="modal fade" id="newVacancyModal" tabindex="-1" aria-labelledby="newVacancyModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      <form id="newVacancyForm" novalidate>
+      <form id="newVacancyForm" novalidate aria-label="Новая вакансия">
         <div class="modal-header">
           <h2 class="modal-title h5" id="newVacancyModalLabel">Новая вакансия</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -267,7 +270,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-bs-dismiss="modal">Отмена</button>
-          <button type="submit" class="btn btn-primary"><i class="bi bi-send me-1"></i>Опубликовать</button>
+          <button type="submit" class="btn btn-primary"><i aria-hidden="true" class="bi bi-send me-1"></i>Опубликовать</button>
         </div>
       </form>
     </div>
@@ -277,7 +280,7 @@
 <div class="modal fade" id="vacancyModal" tabindex="-1" aria-labelledby="vacancyModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form id="vacancyForm" novalidate>
+      <form id="vacancyForm" novalidate aria-label="Редактирование вакансии">
         <div class="modal-header">
           <h2 class="modal-title h5" id="vacancyModalLabel">Редактирование вакансии</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -334,7 +337,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
-        <button type="button" class="btn btn-danger" id="confirmDeleteVacancy"><i class="bi bi-trash me-1"></i>Удалить</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteVacancy"><i aria-hidden="true" class="bi bi-trash me-1"></i>Удалить</button>
       </div>
     </div>
   </div>
@@ -355,6 +358,7 @@
 <script src="js/header-auth.js"></script>
 <script src="js/profile.js"></script>
 <script src="js/employer-page.js"></script>
+<script src="js/a11y.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
